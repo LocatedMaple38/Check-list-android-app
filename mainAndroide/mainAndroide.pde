@@ -26,28 +26,36 @@ int intBack = 4;
 float[] xBack = new float[intBack], yBack = new float[intBack], widthBack = new float[intBack], heightBack = new float[intBack];
 float heightBackground;
 
+//PrintWriter log;
+
 void setup() {
-  size(9*40, 16*40);
+  size(50*9, 50*16);
+  //log = createWriter("log.txt"); 
   textAlign(CENTER, CENTER);
-  for (int i = 0; i < stringNav.length; i++) {
+  println("Width", width, "Height", height);
+  println("nav");
+  for(int i = 0; i < stringNav.length; i++){
     xNav[i] = (width/stringNav.length)*i;
     yNav[i] = 0;
     widthNav[i] = width/stringNav.length;
     heightNav[i] = 20;
+    println("|-rect "+i, "\n| |-xNav "+i, xNav[i], "\n| |-yNav "+i, yNav[i], "\n| |-widthNav "+i, widthNav[i], "\n| '-heightNav "+i, heightNav[i]);
   }
-
-
-
+  
+  println("\nItem");
   for (int i = 0; i < intItem; i++) {
+    println("|-item "+i);
     xItem[i] = width*1/10;
     yItem[i] = heightNav[0]+10;
     widthItem = width*8/10;
     heightItem = 50;
-
+    println("| |-Item dim", "\n| | |-xItem", xItem[i], "\n| | |-yItem", yItem[i], "\n| | |-widthItem", widthItem, "\n| | |-heightItem", heightItem);
+    
     xMark[i] = xItem[i]+heightItem*1/4;
     yMark[i] = yItem[i]+heightItem*1/4;
     widthMark = heightItem*1/2;
     heightMark = heightItem*1/2;
+    println("| |-Mark dim", "\n| | |-xMark", xMark[i], "\n| | |-yMark", yMark[i], "\n| | |-widthMark", widthMark, "\n| | |-heightMark", heightMark);
 
     xMark1[i] = xMark[i]+widthMark*1/8;
     yMark1[i] = yMark[i]+heightMark*1/8;
@@ -65,28 +73,34 @@ void setup() {
     yName[i] = yItem[i]+heightItem*1/8;
     widthName = (xItem[i]+widthItem)-(xItem[i]+heightItem);
     heightName = heightItem*1/4;
+    println("| |-name dim", "\n| | |-xName", xName[i], "\n| | |-yName", yName[i], "\n| | |-widthName", widthName, "\n| | |-heightname", heightName);
 
     xDay[i] = xItem[i]+heightItem;
     yDay[i] = yItem[i]+heightItem*5/8;
     widthDay = ((xItem[i]+widthItem)-(xItem[i]+heightItem))*1/3;
     heightDay = heightItem*1/4;
     intDay[i] = 0;
+    println("| |-day dim", "\n| | |-xDay", xDay[i], "\n| | |-yDay", yDay[i], "\n| | |-widthDay", widthDay, "\n| | |-heightDay", heightDay);
 
     xPrice[i] = widthDay+xItem[i]+heightItem;
     yPrice[i] = yItem[i]+heightItem*5/8;
     widthPrice = widthName*1/3;
     heightPrice = heightName;
-
+    println("| |-prce dim", "\n| | |-xPrice", xPrice[i], "\n| | |-yPrice", yPrice[i], "\n| | |-widthPrice", widthPrice, "\n| | |-heightPrice", heightPrice);
+    
     xMore[i] = widthPrice+widthDay+xItem[i]+heightItem;
     yMore[i] = yItem[i]+heightItem*5/8;
     widthMore = widthName*1/3;
     heightMore = heightName;
+    println("| |-more dim", "\n| | |-xMore", xMore[i], "\n| | |-yMore", yMore[i], "\n| | |-widthMore", widthMore, "\n| | |-heightMore", heightMore);
+
   }
 
   xItemNew[0] = width*8/10;
   yItemNew[0] = heightNav[0]+10+(heightItem+10)*intItem;
   widthItemNew[0] = width*1/10;
   heightItemNew[0] = width*1/10;
+  println("\nitem new dim", "\n|-xItemNew", xItemNew[0], "\n|-yItemNew", yItemNew[0], "\n|-widthItemNew", widthItemNew[0], "\n|-heightItemNew", heightItemNew[0]);
 
   xItemNew[1] = xItemNew[0]+widthItemNew[0]*1/2;
   yItemNew[1] = yItemNew[0]+heightItemNew[0]*1/10;
@@ -103,6 +117,7 @@ void setup() {
   } else {
     heightBackground = heightNav[0]+10+(heightItem+10)*intItem+10;
   }
+  println("\nbackgound height", heightBackground);
 }
 
 void draw() {
